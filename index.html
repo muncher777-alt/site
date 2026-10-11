@@ -8,395 +8,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-
-  :root{
-    --paper: #F6F1E6;
-    --paper-deep: #EEE5D2;
-    --ink: #201F1B;
-    --ink-soft: #57534a;
-    --red: #C33F2E;
-    --red-deep: #a63426;
-    --green: #2F7A4E;
-    --teal: #223330;
-    --line: rgba(32,31,27,0.14);
-    --radius: 3px;
-  }
-
-  *{ box-sizing: border-box; }
-  html{ scroll-behavior: smooth; }
-
-  body{
-    margin:0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Karla', sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* subtle paper grain */
-  body::before{
-    content:"";
-    position: fixed; inset:0;
-    pointer-events:none;
-    opacity:0.9;
-    mix-blend-mode: multiply;
-    z-index: 1;
-    background-image: url("paper-tile.jpg");
-    background-size: 900px 1350px;
-    background-repeat: repeat;
-  }
-
-  h1,h2,h3{
-    font-family: 'Permanent Marker', cursive;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    line-height: 1.35;
-    margin: 0;
-    color: var(--ink);
-  }
-
-  a{ color: inherit; }
-
-  .wrap{
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  .eyebrow{
-    font-family:'Karla', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--red-deep);
-  }
-
-  /* ---------- NAV ---------- */
-  nav{
-    position: sticky; top:0; z-index: 50;
-    background: rgba(246,241,230,0.88);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--line);
-  }
-  nav .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    padding-top: 14px; padding-bottom: 14px;
-  }
-  .nav-logo{ display:flex; align-items:center; gap:10px; }
-  .nav-logo img{ height: 34px; width:auto; display:block; }
-  .nav-logo span{ font-family:'Permanent Marker',cursive; font-weight:400; font-size:1.25rem; letter-spacing:0.02em; color: var(--ink); }
-  .nav-links{ display:flex; align-items:center; gap: 28px; font-size:0.92rem; font-weight:600; }
-  .nav-links a{ text-decoration:none; opacity:0.82; transition: opacity 0.2s; }
-  .nav-links a:hover{ opacity:1; }
-  .nav-donate{
-    background: var(--red);
-    color: #fdf8ef !important;
-    padding: 9px 18px;
-    border-radius: var(--radius);
-    font-weight:700;
-    opacity:1 !important;
-  }
-  .nav-donate:hover{ background: var(--red-deep); }
-  @media (max-width: 620px){
-    .nav-links a:not(.nav-donate){ display:none; }
-  }
-
-  /* ---------- HERO ---------- */
-  header.hero{
-    position: relative;
-    padding: 86px 0 60px;
-    overflow: hidden;
-    background-image:
-      radial-gradient(ellipse 700px 500px at 85% 15%, rgba(195,63,46,0.10), transparent 60%),
-      radial-gradient(ellipse 500px 400px at 10% 90%, rgba(47,122,78,0.08), transparent 60%),
-      linear-gradient(rgba(32,31,27,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(32,31,27,0.05) 1px, transparent 1px);
-    background-size: auto, auto, 44px 44px, 44px 44px;
-  }
-  .hero-inner{
-    position:relative; z-index:2;
-    max-width: 700px;
-  }
-  .hero-logo{
-    width: min(360px, 70vw);
-    height:auto;
-    margin-bottom: 6px;
-    display:block;
-  }
-  .hero h1{
-    font-size: clamp(1.8rem, 4.2vw, 2.7rem);
-    font-weight: 400;
-    line-height:1.45;
-    letter-spacing: 0.01em;
-    margin-top: 22px;
-    max-width: 15ch;
-  }
-  .hero h1 em{
-    font-style: italic;
-    color: var(--red-deep);
-  }
-  .hero p.lede{
-    font-size: 1.08rem;
-    color: var(--ink-soft);
-    max-width: 46ch;
-    margin-top: 18px;
-  }
-  .hero-ctas{
-    display:flex; gap:16px; align-items:center; flex-wrap:wrap;
-    margin-top: 32px;
-  }
-  .hero-trust{
-    margin-top: 28px;
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-    max-width: 44ch;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-  }
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    padding: 13px 24px;
-    border-radius: var(--radius);
-    font-weight:700;
-    font-size: 0.98rem;
-    text-decoration:none;
-    border: 1.5px solid transparent;
-    transition: transform 0.15s ease, background 0.2s ease;
-  }
-  .btn:hover{ transform: translateY(-1px); }
-  .btn-primary{ background: var(--red); color:#fdf8ef; }
-  .btn-primary:hover{ background: var(--red-deep); }
-  .btn-ghost{ border-color: var(--ink); color: var(--ink); }
-  .btn-ghost:hover{ background: var(--ink); color: var(--paper); }
-
-  /* decorative birds in hero corner */
-  .hero-birds{
-    position:absolute; top: 40px; right: -30px;
-    width: 260px; opacity: 0.9;
-    z-index:1;
-    pointer-events:none;
-  }
-  @media (max-width: 780px){ .hero-birds{ display:none; } }
-
-  /* ---------- FLIGHT PATH SIGNATURE ---------- */
-  .flight{
-    position: relative;
-    padding: 10px 0 78px;
-  }
-  .flight .wrap{ position:relative; }
-  .flight-labels{
-    display:flex; justify-content:space-between;
-    max-width: 640px;
-    font-family:'Permanent Marker',cursive;
-    font-weight:400;
-    font-size:1.05rem;
-  }
-  .flight-labels span:first-child{ color: var(--ink); }
-  .flight-labels span:last-child{ color: var(--red-deep); }
-  .flight svg{ width:100%; max-width:640px; height:auto; display:block; margin-top: 6px; }
-  .flight-path{
-    fill:none;
-    stroke: var(--ink);
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-dasharray: 7 8;
-    stroke-dashoffset: 900;
-    transition: stroke-dashoffset 1.6s cubic-bezier(.2,.7,.2,1);
-  }
-  .flight.in-view .flight-path{ stroke-dashoffset: 0; }
-  .flight-bird{
-    opacity:0;
-    transform-origin: center;
-    transition: opacity 0.6s ease 1.1s;
-  }
-  .flight.in-view .flight-bird{ opacity:1; }
-  .flight-caption{
-    font-size:0.94rem; color: var(--ink-soft); margin-top: 18px; max-width: 46ch;
-  }
-
-  /* ---------- SECTION SHELLS ---------- */
-  section{ padding: 70px 0; }
-  section.alt{ background: var(--paper-deep); }
-  .reveal{ opacity:0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
-  .reveal.in-view{ opacity:1; transform:none; }
-
-  .section-head{ max-width: 620px; margin-bottom: 40px; }
-  .section-head h2{ font-size: clamp(1.9rem,3.6vw,2.5rem); margin-top:10px; letter-spacing:0.01em; }
-  .section-head p{ color: var(--ink-soft); margin-top: 12px; font-size:1.02rem; }
-
-  /* ---------- ABOUT ---------- */
-  .about-grid{
-    display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items:start;
-  }
-  .about-grid p{ margin: 0 0 16px; color: var(--ink-soft); font-size: 1.02rem; }
-  .about-grid p:last-child{ margin-bottom:0; }
-  .pull{
-    border-left: 3px solid var(--red);
-    padding: 4px 0 4px 22px;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-style: italic;
-    font-size: 1.28rem;
-    line-height:1.45;
-    color: var(--ink);
-  }
-  @media (max-width: 820px){
-    .about-grid{ grid-template-columns: 1fr; gap: 28px; }
-  }
-
-  /* ---------- HOW WE WORK ---------- */
-  .steps{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
-  }
-  .step{
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 26px 24px;
-  }
-  section.alt .step{ background: var(--paper); }
-  .step-num{
-    font-family:'Permanent Marker',cursive; font-weight:400; font-size:0.95rem;
-    color: var(--green);
-    border: 1.5px solid var(--green);
-    width: 30px; height:30px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    margin-bottom: 16px;
-  }
-  .step h3{ font-size:1.12rem; margin-bottom:8px; }
-  .step p{ color: var(--ink-soft); font-size:0.96rem; margin:0; }
-  @media (max-width: 820px){
-    .steps{ grid-template-columns: 1fr; }
-  }
-
-  /* ---------- FAMILY STORY ---------- */
-  .family-grid{
-    display:grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items:center;
-  }
-  .family-photos img{
-    width:100%; height:auto; display:block;
-    border-radius: var(--radius);
-    object-fit: cover;
-  }
-  .family-photos > img{ margin-bottom: 14px; max-height: 340px; object-fit: cover; }
-  .family-photos-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .family-photos-row img{ height: 180px; }
-  .family-text p{ color: var(--ink-soft); font-size:1.02rem; margin: 0 0 16px; }
-  .family-text .btn{ margin-top: 6px; }
-  @media (max-width: 820px){
-    .family-grid{ grid-template-columns: 1fr; gap: 24px; }
-    .family-photos > img{ max-height: 280px; }
-  }
-
-  /* ---------- MONTHLY GIVING TIERS ---------- */
-  .tiers{
-    display:grid; grid-template-columns: repeat(3, 1fr); gap: 26px;
-  }
-  .tier{
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 30px 26px;
-    display:flex; flex-direction:column;
-  }
-  .tier-featured{
-    border-color: var(--red);
-    border-width: 2px;
-    position: relative;
-  }
-  .tier-eyebrow{
-    font-family:'Karla', sans-serif;
-    font-size: 0.68rem; font-weight:700; letter-spacing:0.14em;
-    color: var(--red-deep);
-    margin: 0 0 10px;
-  }
-  .tier-amount{
-    font-family:'Permanent Marker', cursive;
-    font-size: 2.4rem; font-weight:400;
-    margin: 0 0 12px;
-    color: var(--ink);
-  }
-  .tier-amount span{
-    font-size: 0.95rem; font-weight: 500; color: var(--ink-soft);
-  }
-  .tier h3{ font-size: 1.08rem; margin-bottom: 8px; }
-  .tier-desc{ color: var(--ink-soft); font-size:0.94rem; margin: 0 0 22px; flex-grow:1; }
-  .tier-btn{ width:100%; justify-content:center; }
-  .tiers-note{
-    text-align:center; margin-top: 26px; font-size:0.85rem; color: var(--ink-soft);
-  }
-  .tiers-custom{ margin-top: 10px; font-weight:600; }
-  .tiers-custom a{ color: var(--red-deep); text-decoration: underline; }
-  @media (max-width: 820px){
-    .tiers{ grid-template-columns: 1fr; }
-  }
-
-  /* ---------- CTA BAND ---------- */
-  .cta-band{
-    background: var(--teal);
-    color: #F3EFE3;
-    padding: 66px 0;
-    text-align:center;
-  }
-  .cta-band h2{ color:#F3EFE3; font-size: clamp(1.9rem,4vw,2.6rem); }
-  .cta-band p{ color: rgba(243,239,227,0.78); max-width: 46ch; margin: 14px auto 30px; font-size:1.03rem; }
-  .cta-band .btn-primary{ background: var(--red); }
-  .cta-band .btn-primary:hover{ background: #db5a46; }
-  .cta-instagram{
-    margin-top: 26px !important; font-size: 0.92rem !important;
-    color: rgba(243,239,227,0.7) !important;
-  }
-  .cta-instagram a{ color: #F3EFE3; font-weight:700; text-decoration: underline; }
-
-  /* ---------- FOOTER ---------- */
-  footer{ padding: 46px 0 40px; }
-  .footer-top{
-    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;
-    padding-bottom: 26px; border-bottom: 1px solid var(--line);
-  }
-  .footer-brand{ display:flex; align-items:center; gap:10px; }
-  .footer-brand img{ height:28px; }
-  .footer-brand span{ font-family:'Permanent Marker',cursive; font-weight:700; }
-  .footer-links{ display:flex; gap:22px; font-size:0.92rem; font-weight:600; }
-  .footer-links a{ text-decoration:none; opacity:0.8; }
-  .footer-links a:hover{ opacity:1; }
-  .footer-note{
-    margin-top: 22px; font-size: 0.85rem; color: var(--ink-soft); max-width: 620px;
-  }
-  .footer-copy{
-    margin-top: 18px; font-size: 0.8rem; color: var(--ink-soft); opacity:0.8;
-  }
-
-
-  .shop-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:760px; }
-  .shop-item{ background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; }
-  .shop-art{ aspect-ratio:4/5; background:var(--teal); color:var(--paper); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; }
-  .shop-art img{ width:100%; height:100%; object-fit:cover; }
-  .shop-art .art-line{ font-family:'Permanent Marker',cursive; font-size:clamp(1.6rem,4vw,2.3rem); line-height:1.1; }
-  .shop-art .art-sub{ font-size:0.8rem; letter-spacing:0.18em; margin-top:10px; opacity:0.8; }
-  .shop-body{ padding:20px 22px 24px; display:flex; flex-direction:column; flex-grow:1; }
-  .shop-body h3{ font-size:1.05rem; margin-bottom:6px; }
-  .shop-price{ font-size:1.5rem; font-weight:700; margin:0 0 16px; }
-  .shop-body .btn{ width:100%; justify-content:center; margin-top:auto; }
-  @media (max-width:640px){ .shop-grid{ grid-template-columns:1fr; } }
-
-  .relative{ position:relative; z-index:2; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <div class="nav-logo">
-      <img src="logo-cropped.png" alt="Asafeer">
-    </div>
+    <a class="nav-logo" href="index.html"><img src="logo-cropped.png" alt="Asafeer"></a>
     <div class="nav-links">
-      <a href="#noor">Noor's story</a>
-      <a href="#shop">Shop</a>
-      <a href="#get-involved">Get involved</a>
+      <a href="index.html" aria-current="page">Home</a><a href="families.html">Families</a><a href="shop.html">Shop</a><a href="events.html">Events</a><a href="about.html">About us</a>
       <a href="http://taplink.cc/helpgaza" class="nav-donate" target="_blank" rel="noopener">Donate</a>
     </div>
   </div>
@@ -416,7 +36,6 @@
     </div>
   </div>
 </header>
-
 <section class="flight reveal">
   <div class="wrap">
     <div class="flight-labels">
@@ -434,6 +53,20 @@
     <p class="flight-caption">Every donation goes straight to the family, with no organisation in between and no middleman deciding on their behalf. They choose how to use it. Research on humanitarian cash transfers consistently shows that giving people direct, unconditional support helps them meet their most urgent needs and plan further ahead, because they understand their own circumstances better than anyone deciding for them ever could.</p>
   </div>
 </section>
+<section class="alt reveal">
+  <div class="wrap">
+    <div class="draw-grid">
+      <img src="prizedraw.jpg" alt="Prizedraw fundraiser for Gaza, poster">
+      <div class="draw-text">
+        <p class="eyebrow">LIVE NOW</p>
+        <h2 style="margin:10px 0 14px;font-size:clamp(1.8rem,3.4vw,2.4rem)">Online prizedraw fundraiser for Gaza</h2>
+        <p>Donate any amount for a chance to win a prize, including handmade Tatreez, a lunch for two, classes and our "I love Falasteen" shirts. Draw closes 1 November 2026.</p>
+        <a class="btn btn-primary" href="https://www.crowdfunder.co.uk/p/online-prizedraw-fundraiser-for-gaza" target="_blank" rel="noopener">Enter the prizedraw →</a>
+        <a class="btn btn-ghost" href="events.html" style="margin-left:8px">Full details</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="noor" class="reveal">
   <div class="wrap">
@@ -444,16 +77,11 @@
     <div class="family-grid">
       <div class="family-photos">
         <img src="camp-walk.jpg" alt="Noor's daughter walking through the camp where the family now lives">
-        <div class="family-photos-row">
-          <img src="studying.jpg" alt="Noor's children studying on the ground, using notebooks brought to the tent">
-          <img src="graduation.jpg" alt="Noor with her two daughters at a school graduation ceremony">
-        </div>
       </div>
       <div class="family-text">
         <p>Noor is a mother of three, displaced from her home in Gaza after it was destroyed. She and her children now live in a tent camp.</p>
-        <p>We've been in direct contact with Noor since the start, verifying her family, understanding what they need, and staying in touch as things change. Thanks to donations through Asafeer, we've already been able to provide Noor's family with groceries to get them through difficult weeks.</p>
-        <p>We send regular updates to donors showing exactly what their donations went toward.</p>
-        <a class="btn btn-primary" href="https://gogetfunding.com/palestinian-nour-mother-of-3-children-official-gaza-support-fund/" target="_blank" rel="noopener">Support Noor's family →</a>
+        <p>We've been in direct contact with Noor since the start, verifying her family and staying in touch as things change.</p>
+        <a class="btn btn-primary" href="families.html">Meet the families →</a>
       </div>
     </div>
   </div>
@@ -491,31 +119,16 @@
     <p class="tiers-note tiers-custom">Want to give a different amount? <a href="https://pay.sumup.com/b2c/QBG695YY" target="_blank" rel="noopener">Choose your own donation →</a></p>
   </div>
 </section>
-
-<section id="shop" class="reveal">
+<section class="alt reveal">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">SHOP</p>
-      <h2>Wear it, share it</h2>
-      <p>Our "I love Falasteen" range. Choose your size and check out securely in our shop.</p>
+      <p class="eyebrow">EXPLORE</p>
+      <h2>More from Asafeer</h2>
     </div>
-    <div class="shop-grid">
-      <div class="shop-item">
-        <div class="shop-art"><img src="shirt-tank.jpg" alt="Asafeer I love Falasteen tank top" loading="lazy"></div>
-        <div class="shop-body">
-          <h3>Asafeer "I love Falasteen" Tank</h3>
-          <p class="shop-price">£30</p>
-          <a class="btn btn-primary" href="https://clara-mantegazza.bigcartel.com/product/asafeer-i-love-falasteen-tank" target="_blank" rel="noopener">Buy the tank →</a>
-        </div>
-      </div>
-      <div class="shop-item">
-        <div class="shop-art"><img src="shirt-tee.jpg" alt="Asafeer I love Falasteen T-shirt" loading="lazy"></div>
-        <div class="shop-body">
-          <h3>Asafeer "I love Falasteen" T-shirt</h3>
-          <p class="shop-price">£35</p>
-          <a class="btn btn-primary" href="https://clara-mantegazza.bigcartel.com/product/asafeer-i-love-falsateen-t-shirt" target="_blank" rel="noopener">Buy the T-shirt →</a>
-        </div>
-      </div>
+    <div class="explore">
+      <a href="shop.html"><h3>Shop</h3><p>Our "I love Falasteen" tank and T-shirt.</p><span>Visit the shop →</span></a>
+      <a href="events.html"><h3>Events</h3><p>Upcoming and past nights, readings and gatherings.</p><span>See events →</span></a>
+      <a href="about.html"><h3>About us</h3><p>Who we are and how we verify every family.</p><span>Read more →</span></a>
     </div>
   </div>
 </section>
@@ -537,38 +150,20 @@
         <img src="logo-cropped.png" alt="Asafeer">
       </div>
       <div class="footer-links">
+        <a href="families.html">Families</a>
+        <a href="shop.html">Shop</a>
+        <a href="events.html">Events</a>
+        <a href="about.html">About us</a>
         <a href="http://taplink.cc/helpgaza" target="_blank" rel="noopener">Donate</a>
         <a href="https://www.instagram.com/asafeerfalastin/" target="_blank" rel="noopener">Instagram</a>
-        <a href="#get-involved">Get involved</a>
+        <a href="mailto:Asafeercharity@gmail.com">Email us</a>
       </div>
     </div>
-    <p class="footer-note">Asafeer is currently completing registration with the Charity Commission for England and Wales.<br>Charity Commission application reference: 20261001 - DT - ASAFEER : 5295829 CRM26:001900020416<br>Once registered, our charity number will appear here.</p>
+    <p class="footer-note">Asafeer is currently completing the 27 weeks application and registration process with the Charity Commission for England and Wales.<br>Asafeer’s Charity Commission application reference: 20261001 - DT - ASAFEER : 5295829 CRM26:001900020416<br>Upon completion, our charity number will appear here.</p>
     <p class="footer-copy">© <span id="year"></span> Asafeer. London, UK.</p>
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('in-view');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.25 });
-
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(prefersReduced){
-    document.querySelectorAll('.reveal, .flight-path, .flight-bird').forEach(el=>{
-      el.style.transition = 'none';
-      el.classList.add('in-view');
-    });
-  }
-</script>
-
+<script src="site.js"></script>
 </body>
 </html>
