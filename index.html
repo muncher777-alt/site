@@ -370,6 +370,19 @@
     margin-top: 18px; font-size: 0.8rem; color: var(--ink-soft); opacity:0.8;
   }
 
+
+  .shop-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:760px; }
+  .shop-item{ background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; }
+  .shop-art{ aspect-ratio:4/5; background:var(--teal); color:var(--paper); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px; }
+  .shop-art img{ width:100%; height:100%; object-fit:cover; }
+  .shop-art .art-line{ font-family:'Permanent Marker',cursive; font-size:clamp(1.6rem,4vw,2.3rem); line-height:1.1; }
+  .shop-art .art-sub{ font-size:0.8rem; letter-spacing:0.18em; margin-top:10px; opacity:0.8; }
+  .shop-body{ padding:20px 22px 24px; display:flex; flex-direction:column; flex-grow:1; }
+  .shop-body h3{ font-size:1.05rem; margin-bottom:6px; }
+  .shop-price{ font-size:1.5rem; font-weight:700; margin:0 0 16px; }
+  .shop-body .btn{ width:100%; justify-content:center; margin-top:auto; }
+  @media (max-width:640px){ .shop-grid{ grid-template-columns:1fr; } }
+
   .relative{ position:relative; z-index:2; }
 </style>
 </head>
@@ -382,6 +395,7 @@
     </div>
     <div class="nav-links">
       <a href="#noor">Noor's story</a>
+      <a href="#shop">Shop</a>
       <a href="#get-involved">Get involved</a>
       <a href="http://taplink.cc/helpgaza" class="nav-donate" target="_blank" rel="noopener">Donate</a>
     </div>
@@ -478,6 +492,34 @@
   </div>
 </section>
 
+<section id="shop" class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">SHOP</p>
+      <h2>Wear it, share it</h2>
+      <p>Our "I love Falasteen" range. Choose your size and check out securely in our shop.</p>
+    </div>
+    <div class="shop-grid">
+      <div class="shop-item">
+        <div class="shop-art"><img src="shirt-tank.jpg" alt="Asafeer I love Falasteen tank top" loading="lazy"></div>
+        <div class="shop-body">
+          <h3>Asafeer "I love Falasteen" Tank</h3>
+          <p class="shop-price">£30</p>
+          <a class="btn btn-primary" href="https://clara-mantegazza.bigcartel.com/product/asafeer-i-love-falasteen-tank" target="_blank" rel="noopener">Buy the tank →</a>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-art"><img src="shirt-tee.jpg" alt="Asafeer I love Falasteen T-shirt" loading="lazy"></div>
+        <div class="shop-body">
+          <h3>Asafeer "I love Falasteen" T-shirt</h3>
+          <p class="shop-price">£35</p>
+          <a class="btn btn-primary" href="https://clara-mantegazza.bigcartel.com/product/asafeer-i-love-falsateen-t-shirt" target="_blank" rel="noopener">Buy the T-shirt →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="get-involved" class="cta-band reveal">
   <div class="wrap">
     <p class="eyebrow" style="color:#e8a99c;">GET INVOLVED</p>
@@ -500,7 +542,7 @@
         <a href="#get-involved">Get involved</a>
       </div>
     </div>
-    <p class="footer-note">Asafeer is currently completing registration with the Charity Commission for England and Wales. Once registered, our charity number will appear here.</p>
+    <p class="footer-note">Asafeer is currently completing registration with the Charity Commission for England and Wales.<br>Charity Commission application reference: 20261001 - DT - ASAFEER : 5295829 CRM26:001900020416<br>Once registered, our charity number will appear here.</p>
     <p class="footer-copy">© <span id="year"></span> Asafeer. London, UK.</p>
   </div>
 </footer>
