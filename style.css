@@ -12,8 +12,9 @@
   }
 
   @font-face{ font-family:'Dripdrop Solid'; src:url('dripdrop-solid.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
-  @font-face{ font-family:'Dripdrop Alt Solid'; src:url('dripdrop-alt-solid.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
-  html{ font-size:19px; }
+  @font-face{ font-family:'Konfus'; src:url('konfus-regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face{ font-family:'Konfus Brush'; src:url('konfus-brush.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+  html{ font-size:17px; }
   *{ box-sizing: border-box; font-synthesis:none; }
   html{ scroll-behavior: smooth; }
 
@@ -21,7 +22,7 @@
     margin:0;
     background: var(--paper);
     color: var(--ink);
-    font-family: 'Dripdrop Alt Solid','Dripdrop',cursive;
+    font-family: 'Konfus',Georgia,serif;
     font-size:1.12rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -32,7 +33,7 @@
     content:"";
     position: fixed; inset:0;
     pointer-events:none;
-    opacity:0.4;
+    opacity:0.7;
     mix-blend-mode: multiply;
     z-index: 1;
     background-image: url("paper-texture.jpg");
@@ -58,7 +59,7 @@
   }
 
   .eyebrow{
-    font-family:'Dripdrop Alt Solid','Dripdrop',cursive;
+    font-family:'Konfus',Georgia,serif;
     font-size:1.01rem;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -231,7 +232,7 @@
   .pull{
     border-left: 3px solid var(--red);
     padding: 4px 0 4px 22px;
-    font-family:'Dripdrop Alt Solid','Dripdrop',cursive;
+    font-family:'Konfus',Georgia,serif;
     font-style: normal;
     font-size:1.28rem;
     line-height:1.45;
@@ -302,7 +303,7 @@
     position: relative;
   }
   .tier-eyebrow{
-    font-family:'Dripdrop Alt Solid','Dripdrop',cursive;
+    font-family:'Konfus',Georgia,serif;
     font-size:1.00rem; font-weight:700; letter-spacing:0.14em;
     color: var(--red-deep);
     margin: 0 0 10px;
@@ -429,3 +430,11 @@
   .badge-key .badges{ margin:0 0 10px; }
   .family-photos .row2 video{ width:100%; height:auto; display:block; border-radius:var(--radius); background:#000; }
   .prose h2{ margin:34px 0 12px; font-size:clamp(1.5rem,3vw,2rem); }
+
+  /* ---------- TYPE SYSTEM: Dripdrop caps for titles, Konfus for text ---------- */
+  h1,h2,h3,.flight-labels,.event-date,.draw-facts b,.footer-brand span,.nav-logo span{ text-transform:uppercase; letter-spacing:0.03em; }
+  h1,h2,h3{ line-height:1.2; }
+  .btn,.nav-links a,.eyebrow,.badge,.tier-eyebrow,.explore span,.footer-links a{ font-family:'Konfus Brush','Konfus',Georgia,serif; }
+  .btn{ letter-spacing:0.02em; }
+  .hero h1{ max-width:20ch; }
+  .tier h3,.event-card h3,.pillar h3,.explore h3,.shop-body h3,.step h3,.draw-text h3{ font-size:1.3rem; }
